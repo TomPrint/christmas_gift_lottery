@@ -22,7 +22,7 @@ def get_names():
         if len(x) == len(names2):
             return x
 person = get_names()
-print (f) # to check the get_names result
+print (person) # to check the get_names result
 
 # Set up the SMTP server for sender's email, i.e. gmail email.
 server = smtplib.SMTP('smtp.gmail.com', 465)
