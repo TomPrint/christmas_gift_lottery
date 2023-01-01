@@ -14,20 +14,20 @@ emails = {"Tomek": "email1@email.com", "Kuba": "email2@email.com",
 # excluding drawing oneself from the list, i.e Tomek : Tomek.
 # while loop allows to return a dictionary of pairs, after loop returns six records (unique pairs)
 def get_names():
-    names1 = ["Tomek", 'Kuba', "Iwona", "Malwina", "Gosia", "Staszek"]
-    names2 = ["Tomek", "Kuba", "Iwona", "Malwina", "Gosia", "Staszek"]
+    names = ["Tomek", 'Kuba', "Iwona", "Malwina", "Gosia", "Staszek"]
     while True:
-        random.shuffle(names2)
-        x = {key: value for key, value in zip(names1, names2) if key != value}
-        if len(x) == len(names2):
-            return x
+        random.shuffle(names)
+        pairs = {key: value for key, value in zip(names, names[1:] + names[:1])}
+        if len(pairs) == len(names):
+            return pairs
+
 person = get_names()
 print (person) # to check the get_names result
 
 # Set up the SMTP server for sender's email, i.e. gmail email.
 server = smtplib.SMTP('smtp.gmail.com', 465)
 server.starttls()
-server.login('sendersemial@gmail.com', '')
+server.login(email_sender, email_password)
 
 # Send an email to each participant with the information about the person they need to buy a gift for
 for name, email in emails.items():
